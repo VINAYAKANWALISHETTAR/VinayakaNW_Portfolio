@@ -120,6 +120,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 entry.target.classList.add('show');
                 
                 // Animate skill bars when visible
+                if (entry.target.classList.contains('skill-card-minimal')) {
+                    const progressFills = entry.target.querySelectorAll('.progress-fill');
+                    progressFills.forEach(fill => {
+                        const width = fill.getAttribute('data-width');
+                        fill.style.width = width;
+                    });
+                }
+                
+                // Animate skill bars in old structure
                 if (entry.target.classList.contains('skill-category')) {
                     const barFills = entry.target.querySelectorAll('.bar-fill');
                     barFills.forEach(fill => {
@@ -132,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, observerOptions);
 
     // Observe elements
-    document.querySelectorAll('.project-card, .skill-category, .stat-card, .timeline-item, .about-left, .about-timeline').forEach(el => {
+    document.querySelectorAll('.project-card, .skill-category, .skill-card-minimal, .stat-card, .timeline-item, .about-left, .about-timeline').forEach(el => {
         observer.observe(el);
     });
 

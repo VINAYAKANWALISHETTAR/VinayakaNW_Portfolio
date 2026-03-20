@@ -1050,52 +1050,114 @@ section {
     font-weight: 500;
 }
 
-/* ===== SKILLS SECTION ===== */
+/* ===== SKILLS SECTION - MINIMAL DESIGN ===== */
 .skills-section {
     background: rgba(21, 25, 37, 0.5);
+    padding: 80px 20px;
 }
 
-.skills-grid {
+.skills-grid-minimal {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.skill-category {
-    background: rgba(42, 252, 133, 0.05);
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px solid rgba(42, 252, 133, 0.1);
+.skill-card-minimal {
+    background: rgba(42, 252, 133, 0.03);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(42, 252, 133, 0.08);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
-.skill-category h3 {
-    color: #e6e9f0;
-    font-size: 1.5rem;
-    margin-bottom: 25px;
+.skill-card-minimal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.skill-card-minimal:hover {
+    background: rgba(42, 252, 133, 0.06);
+    border-color: rgba(42, 252, 133, 0.15);
+    box-shadow: 0 8px 25px rgba(42, 252, 133, 0.08);
+}
+
+.skill-card-header {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(42, 252, 133, 0.1);
 }
 
-.skill-category h3 i {
+.skill-icon {
     color: #2afc85;
+    font-size: 1.5rem;
 }
 
-.skill-bars {
+.skill-card-header h3 {
+    color: #e6e9f0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.skill-progress-list {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.skill-bar {
+.skill-progress-item {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.skill-bar span {
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skill-info span:first-child {
     color: #c2c6d3;
     font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.skill-percentage {
+    color: #2afc85;
+    font-size: 0.9rem;
+    font-weight: 600;
+    min-width: 45px;
+    text-align: right;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(42, 252, 133, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #1ed761, #2afc85);
+    border-radius: 4px;
+    width: 0;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.skill-card-minimal.show .progress-fill {
+    /* Width will be set via JavaScript */
 }
 
 .skill-bar .bar {
