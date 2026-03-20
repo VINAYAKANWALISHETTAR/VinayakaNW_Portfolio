@@ -324,4 +324,25 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // ===== EASTER EGG: KONAMI CODE =====
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let konamiIndex = 0;
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === konamiCode[konamiIndex]) {
+            konamiIndex++;
+            if (konamiIndex === konamiCode.length) {
+                // Activate Easter egg
+                document.body.style.animation = 'pulse 2s ease-in-out';
+                setTimeout(() => {
+                    document.body.style.animation = '';
+                }, 2000);
+                alert('👑 KINGDOM MODE ACTIVATED! 👑');
+                konamiIndex = 0;
+            }
+        } else {
+            konamiIndex = 0;
+        }
+    });
+
 });

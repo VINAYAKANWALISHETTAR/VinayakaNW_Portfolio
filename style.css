@@ -824,6 +824,12 @@ p {
     pointer-events: none;
     user-select: none;
     opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.kingdom-watermark:hover {
+    opacity: 1;
+    color: rgba(42, 252, 133, 0.4);
 }
 
 /* ===== RESPONSIVE FOR NEW SECTIONS ===== */
