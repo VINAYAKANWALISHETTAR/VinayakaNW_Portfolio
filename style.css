@@ -436,13 +436,16 @@ p {
 /* ===== PROFILE ===== */
 .profile-container {
     position: relative;
-    width: 300px;
-    height: 300px;
+    width: 280px;
+    height: 280px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .profile-img {
-    width: 240px;
-    height: 240px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     object-fit: cover;
     position: absolute;
@@ -453,6 +456,7 @@ p {
     border: 4px solid #0c0f17;
     z-index: 10;
     transition: all 0.4s ease;
+    overflow: hidden;
 }
 
 .profile-img:hover {
@@ -577,38 +581,38 @@ p {
 
     /* PROFILE SIZE */
     .profile-container {
-        width: 250px;
-        height: 250px;
+        width: 230px;
+        height: 230px;
     }
 
     .profile-img {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
     }
 
     .border-outer {
-        width: 250px;
-        height: 250px;
+        width: 210px;
+        height: 210px;
     }
 
     .border-middle {
-        width: 225px;
-        height: 225px;
+        width: 195px;
+        height: 195px;
     }
 
     .border-inner {
-        width: 200px;
-        height: 200px;
+        width: 180px;
+        height: 180px;
     }
 
     .border-container::after {
-        width: 215px;
-        height: 215px;
+        width: 165px;
+        height: 165px;
     }
 
     .pulse-ring {
-        width: 250px;
-        height: 250px;
+        width: 210px;
+        height: 210px;
     }
 }
 
@@ -631,38 +635,38 @@ p {
 
     /* PROFILE SMALL */
     .profile-container {
-        width: 200px;
-        height: 200px;
-    }
-
-    .profile-img {
-        width: 160px;
-        height: 160px;
-    }
-
-    .border-outer {
-        width: 200px;
-        height: 200px;
-    }
-
-    .border-middle {
         width: 180px;
         height: 180px;
     }
 
+    .profile-img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .border-outer {
+        width: 165px;
+        height: 165px;
+    }
+
+    .border-middle {
+        width: 150px;
+        height: 150px;
+    }
+
     .border-inner {
-        width: 160px;
-        height: 160px;
+        width: 140px;
+        height: 140px;
     }
 
     .border-container::after {
-        width: 170px;
-        height: 170px;
+        width: 130px;
+        height: 130px;
     }
 
     .pulse-ring {
-        width: 200px;
-        height: 200px;
+        width: 165px;
+        height: 165px;
     }
 }
 
@@ -740,8 +744,8 @@ p {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: 2px solid rgba(42, 252, 133, 0.6);
-    box-shadow: 0 0 20px rgba(42, 252, 133, 0.4);
+    border: 1.5px solid rgba(42, 252, 133, 0.5);
+    box-shadow: 0 0 15px rgba(42, 252, 133, 0.3);
     animation: pulse 2s ease-out infinite;
     z-index: 0;
 }
@@ -771,25 +775,25 @@ p {
 }
 
 .border-outer {
-    width: 300px;
-    height: 300px;
-    background: conic-gradient(rgba(42,252,133,0.8) 0deg, transparent 60deg);
+    width: 260px;
+    height: 260px;
+    background: conic-gradient(rgba(42,252,133,0.8) 0deg, transparent 90deg);
     animation: rotate 4s linear infinite;
     z-index: 1;
 }
 
 .border-middle {
-    width: 270px;
-    height: 270px;
-    background: conic-gradient(rgba(21,196,106,0.8) 0deg, transparent 60deg);
+    width: 240px;
+    height: 240px;
+    background: conic-gradient(rgba(21,196,106,0.8) 0deg, transparent 90deg);
     animation: rotate-reverse 3s linear infinite;
     z-index: 2;
 }
 
 .border-inner {
-    width: 240px;
-    height: 240px;
-    background: conic-gradient(rgba(30,215,97,0.8) 0deg, transparent 60deg);
+    width: 220px;
+    height: 220px;
+    background: conic-gradient(rgba(30,215,97,0.8) 0deg, transparent 90deg);
     animation: rotate 2s linear infinite;
     z-index: 3;
 }
@@ -799,12 +803,12 @@ p {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 240px;
-    height: 240px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     background: rgba(12, 15, 23, 0.8);
-    border: 3px solid #2afc85;
-    box-shadow: 0 0 20px rgba(42, 252, 133, 0.4);
+    border: 2px solid #2afc85;
+    box-shadow: 0 0 15px rgba(42, 252, 133, 0.3);
     z-index: 5;
 }
 
@@ -814,10 +818,10 @@ p {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 215px;
-    height: 215px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
-    background: rgba(42, 252, 133, 0.1);
+    background: rgba(42, 252, 133, 0.08);
 }
 
 /* ===== ENHANCED PROFILE RINGS ===== */
