@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // ===== SCROLL ANIMATIONS =====
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
+        rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -146,6 +146,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         fill.style.width = width;
                     });
                 }
+            } else {
+                // Optional: Remove 'show' to re-animate when scrolling back
+                // entry.target.classList.remove('show');
             }
         });
     }, observerOptions);

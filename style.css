@@ -44,6 +44,7 @@ body {
     transform: translate(-50%, -50%);
     mix-blend-mode: screen;
     transition: width 0.3s, height 0.3s;
+    opacity: 0.6;
 }
 
 body:hover .cursor-glow {
@@ -778,6 +779,34 @@ p {
 /* Hide scroll indicator on mobile */
 @media (max-width: 768px) {
     .scroll-indicator {
+        display: none;
+    }
+    
+    /* MOBILE STICKY CTA */
+    .mobile-sticky-cta {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 999;
+        display: flex;
+        gap: 10px;
+        background: rgba(12, 15, 23, 0.9);
+        backdrop-filter: blur(10px);
+        padding: 12px 20px;
+        border-radius: 50px;
+        border: 1px solid rgba(42, 252, 133, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+    
+    .mobile-sticky-cta .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-sticky-cta {
         display: none;
     }
 }
