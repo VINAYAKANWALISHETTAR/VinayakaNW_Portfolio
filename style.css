@@ -6,6 +6,10 @@
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background: linear-gradient(135deg, #0c0f17 0%, #151925 100%);
     color: #e6e9f0;
@@ -699,6 +703,30 @@ p {
     
     .contact-form {
         padding: 25px;
+    }
+    
+    /* Better tap targets for mobile */
+    .btn {
+        padding: 15px 30px;
+        min-height: 50px;
+    }
+    
+    .social-icons a {
+        width: 55px;
+        height: 55px;
+    }
+    
+    /* Reduce animation intensity */
+    .gradient-orb {
+        animation-duration: 30s;
+    }
+    
+    .cursor-glow {
+        display: none; /* Hide custom cursor on touch devices */
+    }
+    
+    body {
+        cursor: auto;
     }
 }
 
