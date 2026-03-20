@@ -327,3 +327,169 @@ p {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* ===== TABLET ===== */
+@media (max-width: 992px) {
+
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 60px;
+        padding: 100px 20px 40px;
+    }
+
+    .cta-buttons {
+        justify-content: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+
+/* ===== SMALL TABLET ===== */
+@media (max-width: 768px) {
+
+    header {
+        padding: 15px 20px;
+    }
+
+    /* MOBILE NAV */
+    nav ul {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: rgba(12, 15, 23, 0.95);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 50px;
+        transition: left 0.3s ease;
+    }
+
+    nav ul.active {
+        left: 0;
+    }
+
+    nav a {
+        font-size: 1.2rem;
+        padding: 15px 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    /* TEXT */
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+    }
+
+    /* BUTTON */
+    .btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+
+    /* PROFILE SIZE */
+    .profile-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    .profile-img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .border-outer {
+        width: 250px;
+        height: 250px;
+    }
+
+    .border-middle {
+        width: 225px;
+        height: 225px;
+    }
+
+    .border-inner {
+        width: 200px;
+        height: 200px;
+    }
+
+    .border-container::after {
+        width: 215px;
+        height: 215px;
+    }
+
+    .pulse-ring {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+
+/* ===== MOBILE ===== */
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* PROFILE SMALL */
+    .profile-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .border-outer {
+        width: 200px;
+        height: 200px;
+    }
+
+    .border-middle {
+        width: 180px;
+        height: 180px;
+    }
+
+    .border-inner {
+        width: 160px;
+        height: 160px;
+    }
+
+    .border-container::after {
+        width: 170px;
+        height: 170px;
+    }
+
+    .pulse-ring {
+        width: 200px;
+        height: 200px;
+    }
+}
