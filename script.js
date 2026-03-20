@@ -192,4 +192,96 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    // ===== FINAL CTA SECTION ANIMATION =====
+    const finalCtaObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, { threshold: 0.3 });
+
+    const finalCtaContent = document.querySelector('.final-cta-content');
+    if (finalCtaContent) {
+        finalCtaObserver.observe(finalCtaContent);
+    }
+
+    // ===== CHATBOT FUNCTIONALITY =====
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotPanel = document.getElementById('chatbotPanel');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    const quickOptions = document.querySelectorAll('.quick-option');
+
+    // Toggle chatbot panel
+    if (chatbotToggle) {
+        chatbotToggle.addEventListener('click', () => {
+            chatbotPanel.classList.toggle('active');
+            if (chatbotPanel.classList.contains('active')) {
+                chatbotToggle.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+            } else {
+                chatbotToggle.innerHTML = '<i class="fa-solid fa-message"></i>';
+            }
+        });
+    }
+
+    // Close chatbot
+    if (chatbotClose) {
+        chatbotClose.addEventListener('click', () => {
+            chatbotPanel.classList.remove('active');
+            chatbotToggle.innerHTML = '<i class="fa-solid fa-message"></i>';
+        });
+    }
+
+    // Handle quick options
+    quickOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const action = option.getAttribute('data-action');
+            
+            // Add user message
+            addUserMessage(option.textContent.trim());
+            
+            // Process action
+            setTimeout(() => {
+                switch(action) {
+                    case 'projects':
+                        addBotMessage('Check out my featured projects in the Projects section above! 🚀');
+                        break;
+                    case 'skills':
+                        addBotMessage('I have expertise in Frontend, Backend, Cybersecurity, and AI technologies. See the Skills section for details! 💡');
+                        break;
+                    case 'contact':
+                        addBotMessage('You can reach out using the contact form below or scroll down to the Contact section! 📧');
+                        setTimeout(() => {
+                            document.querySelector('#contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }, 500);
+                        break;
+                    case 'resume':
+                        addBotMessage('You can download my resume from the button in the section above! 📄');
+                        break;
+                }
+            }, 600);
+        });
+    });
+
+    function addUserMessage(text) {
+        const userMsg = document.createElement('div');
+        userMsg.className = 'chat-message user-message';
+        userMsg.textContent = text;
+        chatbotMessages.appendChild(userMsg);
+        scrollToBottom();
+    }
+
+    function addBotMessage(text) {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chat-message bot-message';
+        botMsg.textContent = text;
+        chatbotMessages.appendChild(botMsg);
+        scrollToBottom();
+    }
+
+    function scrollToBottom() {
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+
 });
