@@ -284,4 +284,31 @@ document.addEventListener("DOMContentLoaded", function () {
         chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
     }
 
+    // ===== SCROLL INDICATOR FUNCTIONALITY =====
+    const scrollIndicator = document.getElementById('scrollIndicator');
+    
+    if (scrollIndicator) {
+        // Click to scroll to About section
+        scrollIndicator.addEventListener('click', () => {
+            const aboutSection = document.querySelector('#about');
+            if (aboutSection) {
+                aboutSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }
+        });
+        
+        // Hide on scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                scrollIndicator.style.opacity = '0';
+                scrollIndicator.style.pointerEvents = 'none';
+            } else {
+                scrollIndicator.style.opacity = '0.7';
+                scrollIndicator.style.pointerEvents = 'all';
+            }
+        });
+    }
+
 });
