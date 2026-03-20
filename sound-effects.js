@@ -1,56 +1,93 @@
 // ===== BUTTON CLICK SOUND EFFECTS =====
 
-// Create audio element for click sound (using a soft UI click from CDN)
-const clickSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3');
-
-// Configure audio settings
-clickSound.volume = 0.3; // Low volume (30%)
-clickSound.preload = 'auto'; // Preload for instant playback
-
-// Function to play click sound
-function playClickSound() {
-    // Clone the audio to allow rapid successive plays
-    const soundClone = clickSound.cloneNode();
-    soundClone.volume = 0.3;
+// Sound effect manager
+const SoundFX = {
+    // Initialize with multiple sound options for variety
+    sounds: [
+        'https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3',
+        'https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3'
+    ],
     
-    // Play the sound
-    soundClone.play().catch(error => {
-        // Silently handle autoplay policy errors
-        console.log('Audio play prevented by browser policy');
-    });
-}
-
-// Initialize button sound effects after DOM loads
-document.addEventListener('DOMContentLoaded', function() {
-    // Select all buttons with .btn class
-    const buttons = document.querySelectorAll('.btn');
-    
-    // Add click event listener to each button
-    buttons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            // Play sound on click
-            playClickSound();
+    // Preload all sounds
+    init: function() {
+        this.preloadedSounds = [];
+        const self = this;
+        
+        this.sounds.forEach((url, index) => {
+            const audio = new Audio(url);
+            audio.volume = 0.4; // 40% volume - clear but not loud
+            audio.preload = 'auto';
             
-            // Optional: Add visual feedback (if not already present)
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = '';
-            }, 100);
+            // Force load the audio
+            audio.load();
+            
+            this.preloadedSounds.push(audio);
         });
         
-        // Optional: Add hover sound effect (very subtle)
-        button.addEventListener('mouseenter', function() {
-            // Uncomment below if you want hover sounds too
-            // playHoverSound();
+        console.log('🔊 Sound effects initialized');
+    },
+    
+    // Play click sound with variation
+    playClick: function() {
+        try {
+            // Use a random sound for variety
+            const soundIndex = Math.floor(Math.random() * this.preloadedSounds.length);
+            const soundToPlay = this.preloadedSounds[soundIndex].cloneNode();
+            soundToPlay.volume = 0.4;
+            
+            // Ensure the sound can play
+            soundToPlay.addEventListener('canplaythrough', () => {
+                soundToPlay.play().catch(err => {
+                    console.log('Sound play blocked:', err.message);
+                });
+            });
+            
+            // Fallback: try to play immediately
+            setTimeout(() => {
+                soundToPlay.play().catch(err => {
+                    // Silent fail for browser policy
+                });
+            }, 10);
+            
+        } catch (error) {
+            console.log('Sound error:', error.message);
+        }
+    }
+};
+
+// Initialize sounds immediately
+SoundFX.init();
+
+// Make sound available globally for testing
+window.playTestSound = function() {
+    SoundFX.playClick();
+    console.log('Test sound played!');
+};
+
+// Add click sounds after DOM loads
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded - initializing button sounds...');
+    
+    // Select all buttons with .btn class
+    const buttons = document.querySelectorAll('.btn');
+    console.log('Found', buttons.length, 'buttons');
+    
+    // Add click event listener to each button
+    buttons.forEach((button, index) => {
+        console.log('Adding sound to button', index + 1);
+        
+        button.addEventListener('click', function(e) {
+            console.log('Button clicked - playing sound');
+            SoundFX.playClick();
+            
+            // Add visual feedback
+            const originalTransform = this.style.transform;
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = originalTransform;
+            }, 100);
         });
     });
     
-    // Optional: Add hover sound function (commented out by default)
-    /*
-    function playHoverSound() {
-        const hoverSound = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
-        hoverSound.volume = 0.15; // Very low volume for hover
-        hoverSound.play().catch(() => {});
-    }
-    */
+    console.log('✅ Button sound effects ready!');
 });
