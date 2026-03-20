@@ -2,6 +2,48 @@
 // ===== RUN AFTER PAGE LOAD =====
 document.addEventListener("DOMContentLoaded", function () {
 
+    // ===== CREATE PARTICLES =====
+    function createParticles() {
+        const container = document.getElementById('particles');
+        const particleCount = 30;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 15 + 's';
+            particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            container.appendChild(particle);
+        }
+    }
+    createParticles();
+
+    // ===== CURSOR GLOW EFFECT =====
+    const cursorGlow = document.createElement('div');
+    cursorGlow.className = 'cursor-glow';
+    document.body.appendChild(cursorGlow);
+
+    document.addEventListener('mousemove', (e) => {
+        cursorGlow.style.left = e.clientX + 'px';
+        cursorGlow.style.top = e.clientY + 'px';
+    });
+
+    // ===== MAGNETIC BUTTONS =====
+    const buttons = document.querySelectorAll('.btn, .social-icons a');
+    buttons.forEach(button => {
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            button.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+        
+        button.addEventListener('mouseleave', () => {
+            button.style.transform = 'translate(0, 0)';
+        });
+    });
+
     // ===== MOBILE MENU =====
     const menuToggle = document.querySelector(".menu-toggle");
     const navMenu = document.querySelector("nav ul");
@@ -28,7 +70,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const texts = [
         "Full Stack Developer",
         "UI/UX Designer",
-        "Web Consultant"
+        "Cybersecurity Enthusiast",
+        "AI/ML Developer",
+        "Backend Developer",
+        "Tech Innovator"
     ];
 
     let textIndex = 0;
@@ -62,6 +107,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(type, 1000);
 
+
+    // ===== SCROLL ANIMATIONS =====
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                
+                // Animate skill bars when visible
+                if (entry.target.classList.contains('skill-category')) {
+                    const barFills = entry.target.querySelectorAll('.bar-fill');
+                    barFills.forEach(fill => {
+                        const width = fill.getAttribute('data-width');
+                        fill.style.width = width;
+                    });
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements
+    document.querySelectorAll('.project-card, .skill-category, .stat-card, .timeline-item').forEach(el => {
+        observer.observe(el);
+    });
 
     // ===== SMOOTH SCROLL =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
