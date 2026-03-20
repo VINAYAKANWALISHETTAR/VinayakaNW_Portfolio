@@ -3,60 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Website</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Vinayaka N Walishettar | Portfolio</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header>
-        <a href="#" class="logo">
-            <i class="fa-solid fa-code"></i>
-            <span class="logo-text">VNW100</span>
-        </a>
-            <nav>
-                <div class="menu-toggle">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-    </header>
-     <section class="hero" id="home">
-     <div class="container">
+
+<!-- ===== HEADER ===== -->
+<header>
+    <a href="#" class="logo">
+        <i class="fa-solid fa-code logo-icon"></i>
+        <span class="logo-text">Vinayaka N Walishettar</span>
+    </a>
+
+    <nav>
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+
+<!-- ===== HERO SECTION ===== -->
+<section class="hero" id="home">
+
+    <!-- LEFT CONTENT -->
+    <div class="content">
+
         <h1>Vinayaka N Walishettar</h1>
-        <h2>Software Developer <span class="typing-text">Full Stack Developer</span></h2>
-         <p>I am a passionate and dedicated software developer with a strong background in full stack development.With over 2 years of experience in the field, I have developed a wide range of web applications using various technologies.</p>
-         <div class="cta-btns">
-            <a href="#projects" class="cta-btn-primary">
-                <i class="fa-solid fa-arrow-right"></i> View Projects
+
+        <h2>
+            Software Developer
+            <span class="typing-text">Full Stack Developer</span>
+        </h2>
+
+        <p>
+            I am a passionate and dedicated software developer with a strong background
+            in full stack development. I build modern, responsive, and high-performance
+            web applications using cutting-edge technologies.
+        </p>
+
+        <!-- BUTTONS -->
+        <div class="cta-buttons">
+            <a href="#projects" class="btn btn-primary">
+                <i class="fa-solid fa-arrow-right"></i>
+                View Projects
             </a>
-            <a href="#contact" class="cta-btn-secondary">
-                <i class="fa-solid fa-paper-plane"></i> Contact Me
+
+            <a href="#contact" class="btn btn-secondary">
+                <i class="fa-solid fa-paper-plane"></i>
+                Contact Me
             </a>
-         </div>
-         <div class="social-icons">
+        </div>
+
+        <!-- SOCIAL ICONS -->
+        <div class="social-icons">
             <a href="#"><i class="fab fa-github"></i></a>
             <a href="#"><i class="fab fa-linkedin-in"></i></a>
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-twitter"></i></a>
-         </div>
+        </div>
+
     </div>
+
+
+    <!-- RIGHT PROFILE -->
     <div class="profile-container">
+
+        <!-- Pulse Rings -->
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring"></div>
+
+        <!-- Rotating Rings -->
         <div class="border-outer"></div>
         <div class="border-middle"></div>
         <div class="border-inner"></div>
+
+        <!-- Center Background -->
         <div class="border-container"></div>
-        <div class="pulse-ring"></div>
-        <div class="pulse-ring"></div>
-        <div class="pulse-ring"></div>
-        <img src="Adobe Express - file.png" width="200px" alt="Profile Picture" class="profile-img"/>
+
+        <!-- Profile Image -->
+        <img src="Adobe Express - file.png" alt="Profile"
+             class="profile-img">
+
     </div>
-    </section>
-    <script src="script.js"></script>
-    </body>
+
+</section>
+
+
+<!-- JS -->
+<script src="script.js"></script>
+
+</body>
 </html>
