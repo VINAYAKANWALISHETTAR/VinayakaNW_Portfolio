@@ -385,8 +385,8 @@
                     <span class="tag-minimal">Real-time</span>
                 </div>
                 <div class="project-buttons">
-                    <a href="#" class="btn-project-primary"><i class="fa-brands fa-github"></i> Code</a>
-                    <a href="#" class="btn-project-secondary"><i class="fa-solid fa-eye"></i> Live Demo</a>
+                    <a href="#" class="btn-project-primary" data-modal-type="code"><i class="fa-brands fa-github"></i> Code</a>
+                    <a href="#" class="btn-project-secondary" data-modal-type="demo"><i class="fa-solid fa-eye"></i> Live Demo</a>
                 </div>
             </div>
             
@@ -403,8 +403,8 @@
                     <span class="tag-minimal">NLP</span>
                 </div>
                 <div class="project-buttons">
-                    <a href="#" class="btn-project-primary"><i class="fa-brands fa-github"></i> Code</a>
-                    <a href="#" class="btn-project-secondary"><i class="fa-solid fa-eye"></i> Live Demo</a>
+                    <a href="#" class="btn-project-primary" data-modal-type="code"><i class="fa-brands fa-github"></i> Code</a>
+                    <a href="#" class="btn-project-secondary" data-modal-type="demo"><i class="fa-solid fa-eye"></i> Live Demo</a>
                 </div>
             </div>
             
@@ -421,8 +421,8 @@
                     <span class="tag-minimal">Agriculture</span>
                 </div>
                 <div class="project-buttons">
-                    <a href="#" class="btn-project-primary"><i class="fa-brands fa-github"></i> Code</a>
-                    <a href="#" class="btn-project-secondary"><i class="fa-solid fa-eye"></i> Live Demo</a>
+                    <a href="#" class="btn-project-primary" data-modal-type="code"><i class="fa-brands fa-github"></i> Code</a>
+                    <a href="#" class="btn-project-secondary" data-modal-type="demo"><i class="fa-solid fa-eye"></i> Live Demo</a>
                 </div>
             </div>
             
@@ -439,8 +439,8 @@
                     <span class="tag-minimal">Mobile App</span>
                 </div>
                 <div class="project-buttons">
-                    <a href="#" class="btn-project-primary"><i class="fa-brands fa-github"></i> Code</a>
-                    <a href="#" class="btn-project-secondary"><i class="fa-solid fa-eye"></i> Live Demo</a>
+                    <a href="#" class="btn-project-primary" data-modal-type="code"><i class="fa-brands fa-github"></i> Code</a>
+                    <a href="#" class="btn-project-secondary" data-modal-type="demo"><i class="fa-solid fa-eye"></i> Live Demo</a>
                 </div>
             </div>
             
@@ -457,8 +457,8 @@
                     <span class="tag-minimal">Optimization</span>
                 </div>
                 <div class="project-buttons">
-                    <a href="#" class="btn-project-primary"><i class="fa-brands fa-github"></i> Code</a>
-                    <a href="#" class="btn-project-secondary"><i class="fa-solid fa-eye"></i> Live Demo</a>
+                    <a href="#" class="btn-project-primary" data-modal-type="code"><i class="fa-brands fa-github"></i> Code</a>
+                    <a href="#" class="btn-project-secondary" data-modal-type="demo"><i class="fa-solid fa-eye"></i> Live Demo</a>
                 </div>
             </div>
             
@@ -475,8 +475,8 @@
                     <span class="tag-minimal">Multilingual</span>
                 </div>
                 <div class="project-buttons">
-                    <a href="#" class="btn-project-primary"><i class="fa-brands fa-github"></i> Code</a>
-                    <a href="#" class="btn-project-secondary"><i class="fa-solid fa-eye"></i> Live Demo</a>
+                    <a href="#" class="btn-project-primary" data-modal-type="code"><i class="fa-brands fa-github"></i> Code</a>
+                    <a href="#" class="btn-project-secondary" data-modal-type="demo"><i class="fa-solid fa-eye"></i> Live Demo</a>
                 </div>
             </div>
         </div>
@@ -545,7 +545,7 @@
                     <i class="fa-solid fa-paper-plane"></i>
                     Contact Me
                 </a>
-                <a href="#" class="btn-final-secondary">
+                <a href="#" class="btn-final-secondary" data-modal-type="resume">
                     <i class="fa-solid fa-download"></i>
                     Download Resume
                 </a>
@@ -613,6 +613,24 @@
 <div class="mobile-sticky-cta">
     <a href="#contact" class="btn btn-primary">Contact</a>
     <a href="#projects" class="btn btn-secondary">Projects</a>
+</div>
+
+<!-- MODAL POPUP -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-container" id="modalContainer">
+        <button class="modal-close" id="modalClose">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="modal-icon">
+            <i class="fa-solid fa-hourglass-half"></i>
+        </div>
+        <h3 class="modal-title">Coming Soon</h3>
+        <div class="modal-terminal">
+            <div class="terminal-command" id="modalCommand"></div>
+            <div class="terminal-output" id="modalOutput"></div>
+        </div>
+        <p class="modal-message" id="modalMessage"></p>
+    </div>
 </div>
 
 

@@ -345,4 +345,69 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // ===== MODAL POPUP SYSTEM =====
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalContainer = document.getElementById('modalContainer');
+    const modalClose = document.getElementById('modalClose');
+    const modalCommand = document.getElementById('modalCommand');
+    const modalOutput = document.getElementById('modalOutput');
+    const modalMessage = document.getElementById('modalMessage');
+
+    // Modal content configurations
+    const modalContent = {
+        resume: {
+            command: 'resume.build --status="updating"',
+            output: 'available_soon',
+            message: 'I\'m currently updating my resume with my latest projects and experience. Check back soon!'
+        },
+        code: {
+            command: 'git push origin main',
+            output: 'status: refining_code\nvisibility: coming_soon',
+            message: 'This project is being refined. The source code will be available once it\'s production-ready.'
+        },
+        demo: {
+            command: 'deploy --project="portfolio"',
+            output: 'status: testing_phase\nresult: not_live_yet',
+            message: 'This project is in the testing phase. The live demo will be available shortly.'
+        }
+    };
+
+    // Function to show modal
+    function showModal(type) {
+        const content = modalContent[type];
+        if (content) {
+            modalCommand.textContent = content.command;
+            modalOutput.textContent = content.output;
+            modalMessage.textContent = content.message;
+            modalOverlay.classList.add('active');
+        }
+    }
+
+    // Close modal
+    function closeModal() {
+        modalOverlay.classList.remove('active');
+    }
+
+    // Event listeners
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', (e) => {
+            if (e.target === modalOverlay) {
+                closeModal();
+            }
+        });
+    }
+
+    // Add click handlers to buttons
+    document.querySelectorAll('[data-modal-type]').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const modalType = button.getAttribute('data-modal-type');
+            showModal(modalType);
+        });
+    });
+
 });
