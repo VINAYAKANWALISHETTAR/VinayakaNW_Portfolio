@@ -2,6 +2,16 @@
 // ===== RUN AFTER PAGE LOAD =====
 document.addEventListener("DOMContentLoaded", function () {
 
+    // ===== SCROLL PROGRESS BAR =====
+    const scrollProgress = document.getElementById('scrollProgress');
+    
+    window.addEventListener('scroll', () => {
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercentage = (scrollTop / scrollHeight) * 100;
+        scrollProgress.style.width = scrollPercentage + '%';
+    });
+
     // ===== CREATE PARTICLES =====
     function createParticles() {
         const container = document.getElementById('particles');
