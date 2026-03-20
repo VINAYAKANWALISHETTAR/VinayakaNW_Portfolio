@@ -1481,9 +1481,32 @@ footer {
     border-top: 1px solid rgba(42, 252, 133, 0.1);
 }
 
-footer p {
-    color: #c2c6d3;
+footer {
+    background: rgba(12, 15, 23, 0.95);
+    padding: 40px 20px;
+    border-top: 1px solid rgba(42, 252, 133, 0.1);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(42, 252, 133, 0.4), transparent);
+    margin: 0 auto 20px;
+    border-radius: 2px;
+}
+
+.copyright-text {
+    color: rgba(194, 198, 211, 0.6);
+    font-size: 0.9rem;
     margin: 0;
+    font-weight: 400;
+    letter-spacing: 0.3px;
 }
 
 /* ===== FINAL CTA SECTION ===== */
