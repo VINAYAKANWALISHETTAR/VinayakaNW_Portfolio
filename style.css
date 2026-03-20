@@ -252,6 +252,15 @@ h1 {
     text-shadow: 0 5px 15px rgba(46, 252, 139, 0.3);
 }
 
+.hero-kingdom {
+    font-size: 0.65rem;
+    color: rgba(42, 252, 133, 0.4);
+    letter-spacing: 8px;
+    font-weight: 400;
+    margin: -5px 0 15px 0;
+    text-transform: uppercase;
+}
+
 h2 {
     font-size: 1.8rem;
     margin-bottom: 25px;
@@ -758,6 +767,21 @@ p {
     .scroll-indicator {
         display: none;
     }
+}
+
+/* ===== KINGDOM WATERMARK ===== */
+.kingdom-watermark {
+    position: absolute;
+    bottom: -15px;
+    right: 0;
+    font-size: 0.55rem;
+    color: rgba(42, 252, 133, 0.15);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 400;
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.6;
 }
 
 /* ===== RESPONSIVE FOR NEW SECTIONS ===== */
@@ -1596,6 +1620,20 @@ footer {
     margin: 0;
     font-weight: 400;
     letter-spacing: 0.3px;
+}
+
+.footer-kingdom {
+    color: rgba(194, 198, 211, 0.4);
+    font-size: 0.75rem;
+    margin: 8px 0 0 0;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.kingdom-signature {
+    color: rgba(42, 252, 133, 0.5);
+    letter-spacing: 2px;
+    font-weight: 500;
 }
 
 /* ===== FINAL CTA SECTION ===== */
