@@ -136,6 +136,24 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(el);
     });
 
+    // ===== CONTACT FORM HANDLER =====
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const formData = new FormData(this);
+            
+            // Show success message (you can integrate with email service later)
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+            
+            // TODO: Integrate with Formspree, EmailJS, or backend API
+            // Example: fetch('https://formspree.io/f/your-form-id', { method: 'POST', body: formData })
+        });
+    }
+
     // ===== SMOOTH SCROLL =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
