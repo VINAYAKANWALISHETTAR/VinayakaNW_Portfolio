@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, observerOptions);
 
     // Observe elements
-    document.querySelectorAll('.project-card, .skill-category, .stat-card, .timeline-item').forEach(el => {
+    document.querySelectorAll('.project-card, .skill-category, .stat-card, .timeline-item, .about-left, .about-timeline').forEach(el => {
         observer.observe(el);
     });
 
