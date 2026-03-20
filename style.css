@@ -1,0 +1,329 @@
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0c0f17 0%, #151925 100%);
+    color: #e6e9f0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* ===== HEADER ===== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(12, 15, 23, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(42, 252, 133, 0.1);
+}
+
+
+/* ===== LOGO ===== */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #e6e9f0;
+    text-decoration: none;
+}
+
+.logo-icon {
+    color: #2afc85;
+    font-size: 1.8rem;
+}
+
+.logo-text {
+    background: linear-gradient(90deg, #e6e9f0, #2afc85);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* ===== NAVBAR ===== */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    color: #c2c6d3;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #2afc85;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #2afc85;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: #e6e9f0;
+    cursor: pointer;
+}
+
+
+/* ===== HERO SECTION ===== */
+.hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+    padding: 120px 40px 60px;
+    min-height: 100vh;
+}
+
+.content {
+    max-width: 600px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards 0.5s;
+}
+
+
+/* ===== TEXT ===== */
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    background: linear-gradient(90deg, #e6e9f0, #2afc85);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    text-shadow: 0 5px 15px rgba(46, 252, 139, 0.3);
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: #c2c6d3;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    color: #c2c6d3;
+}
+
+
+/* ===== TYPING TEXT ===== */
+.typing-text {
+    position: relative;
+    display: inline-block;
+    color: #2afc85;
+}
+
+.typing-text::after {
+    content: "|";
+    position: absolute;
+    right: -8px;
+    animation: blink 0.7s infinite;
+}
+
+
+/* ===== BUTTONS ===== */
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards 0.8s;
+}
+
+.btn {
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Primary */
+.btn-primary {
+    background: linear-gradient(90deg, #1ed761, #15c46a);
+    color: #0c0f17;
+    box-shadow: 0 5px 15px rgba(30, 215, 97, 0.4);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(30, 215, 97, 0.6);
+}
+
+.btn-primary::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0.5s;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+/* Secondary */
+.btn-secondary {
+    border: 2px solid #2afc85;
+    color: #2afc85;
+}
+
+.btn-secondary:hover {
+    background: rgba(42, 252, 133, 0.1);
+    transform: translateY(-3px);
+}
+
+
+/* ===== SOCIAL ICONS ===== */
+.social-icons {
+    display: flex;
+    gap: 20px;
+    margin-top: 50px;
+    animation: fadeInUp 1s ease forwards 1.1s;
+}
+
+.social-icons a {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1f20, #232838);
+    color: #2afc85;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icons a:hover {
+    transform: translateY(-5px);
+    color: #151925;
+}
+
+.social-icons a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, #1ed761, #2afc85, #15c46a);
+    opacity: 0;
+    transition: 0.3s;
+    z-index: -1;
+}
+
+.social-icons a:hover::before {
+    opacity: 1;
+}
+
+
+/* ===== PROFILE ===== */
+.profile-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.profile-img {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 5px 30px rgba(0,0,0,0.4);
+    border: 4px solid #0c0f17;
+    z-index: 10;
+}
+
+.profile-img:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+
+/* ===== ANIMATIONS ===== */
+@keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes rotate-reverse {
+    from { transform: translate(-50%, -50%) rotate(360deg); }
+    to { transform: translate(-50%, -50%) rotate(0); }
+}
+
+@keyframes pulse {
+    from {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1.4);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
