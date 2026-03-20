@@ -68,13 +68,21 @@ window.playTestSound = function() {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded - initializing button sounds...');
     
-    // Select all buttons with .btn class
-    const buttons = document.querySelectorAll('.btn');
-    console.log('Found', buttons.length, 'buttons');
+    // Select ALL buttons with .btn class (including btn-primary, btn-secondary)
+    const allButtons = document.querySelectorAll('.btn');
+    console.log('Found', allButtons.length, 'buttons with .btn class');
+    
+    // Also select form submit buttons
+    const submitButtons = document.querySelectorAll('button[type="submit"]');
+    console.log('Found', submitButtons.length, 'submit buttons');
+    
+    // Combine all button lists
+    const buttons = [...allButtons, ...submitButtons];
+    console.log('Total buttons to add sounds:', buttons.length);
     
     // Add click event listener to each button
     buttons.forEach((button, index) => {
-        console.log('Adding sound to button', index + 1);
+        console.log('Adding sound to button', index + 1, ':', button.textContent.trim());
         
         button.addEventListener('click', function(e) {
             console.log('Button clicked - playing sound');
