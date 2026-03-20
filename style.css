@@ -1199,74 +1199,146 @@ section {
     box-shadow: 0 5px 15px rgba(42, 252, 133, 0.3);
 }
 
-/* ===== PROJECTS SECTION ===== */
+/* ===== PROJECTS SECTION - MINIMAL DESIGN ===== */
 .projects-section {
     background: rgba(12, 15, 23, 0.5);
+    padding: 80px 20px;
 }
 
-.projects-grid {
+.projects-grid-minimal {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.project-card {
-    background: rgba(42, 252, 133, 0.05);
-    border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid rgba(42, 252, 133, 0.1);
-    transition: all 0.4s ease;
+.project-card-minimal {
+    background: rgba(42, 252, 133, 0.03);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(42, 252, 133, 0.08);
+    transition: all 0.3s ease;
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
 }
 
-.project-card.show {
+.project-card-minimal.show {
     opacity: 1;
     transform: translateY(0);
 }
 
-.project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(42, 252, 133, 0.2);
-    border-color: rgba(42, 252, 133, 0.3);
+.project-card-minimal:hover {
+    background: rgba(42, 252, 133, 0.06);
+    border-color: rgba(42, 252, 133, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(42, 252, 133, 0.1);
 }
 
-.project-image {
-    height: 200px;
-    background: linear-gradient(135deg, rgba(42, 252, 133, 0.1), rgba(30, 215, 97, 0.1));
+.project-header {
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.project-icon {
-    font-size: 5rem;
-    color: #2afc85;
-    opacity: 0.8;
-    transition: all 0.4s ease;
-}
-
-.project-card:hover .project-icon {
-    transform: scale(1.2);
-    opacity: 1;
-}
-
-.project-content {
-    padding: 25px;
-}
-
-.project-content h3 {
-    color: #e6e9f0;
-    font-size: 1.5rem;
+    gap: 10px;
     margin-bottom: 15px;
 }
 
-.project-content p {
+.project-icon-small {
+    color: #2afc85;
+    font-size: 1.3rem;
+}
+
+.project-header h3 {
+    color: #e6e9f0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.project-description {
     color: #c2c6d3;
+    font-size: 0.95rem;
     line-height: 1.6;
+    margin-bottom: 18px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.project-tags-minimal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
     margin-bottom: 20px;
+}
+
+.tag-minimal {
+    background: rgba(42, 252, 133, 0.08);
+    color: #2afc85;
+    padding: 5px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(42, 252, 133, 0.15);
+    transition: all 0.3s ease;
+}
+
+.tag-minimal:hover {
+    background: rgba(42, 252, 133, 0.15);
+    transform: translateY(-2px);
+}
+
+.project-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-project-primary {
+    flex: 1;
+    padding: 10px 18px;
+    background: linear-gradient(90deg, #1ed761, #2afc85);
+    color: #0c0f17;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-project-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(30, 215, 97, 0.3);
+}
+
+.btn-project-secondary {
+    flex: 1;
+    padding: 10px 18px;
+    background: transparent;
+    color: #2afc85;
+    border: 2px solid #2afc85;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-project-secondary:hover {
+    background: rgba(42, 252, 133, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(42, 252, 133, 0.2);
 }
 
 .project-tags {

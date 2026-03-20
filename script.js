@@ -140,8 +140,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }, observerOptions);
 
-    // Observe elements
-    document.querySelectorAll('.project-card, .skill-category, .skill-card-minimal, .stat-card, .timeline-item, .about-left, .about-timeline').forEach(el => {
+    // Observe elements with stagger animation for project cards
+    const projectCards = document.querySelectorAll('.project-card-minimal');
+    projectCards.forEach((card, index) => {
+        // Add stagger delay using style
+        card.style.transitionDelay = `${index * 0.1}s`;
+        observer.observe(card);
+    });
+    
+    // Observe other elements
+    document.querySelectorAll('.skill-category, .skill-card-minimal, .stat-card, .timeline-item, .about-left, .about-timeline').forEach(el => {
         observer.observe(el);
     });
 
