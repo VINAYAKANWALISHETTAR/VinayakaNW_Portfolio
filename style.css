@@ -198,11 +198,33 @@ nav a::after {
     left: 0;
     width: 0;
     height: 2px;
-    background: #2afc85;
+    background: linear-gradient(90deg, #2afc85, #1ed761);
     transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(42, 252, 133, 0.5);
 }
 
 nav a:hover::after {
+    width: 100%;
+}
+
+/* Enhanced Nav Animation */
+nav a {
+    display: inline-block;
+}
+
+nav a::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    color: #2afc85;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::before {
     width: 100%;
 }
 
@@ -299,6 +321,23 @@ p {
     overflow: hidden;
 }
 
+/* Button Ripple Effect */
+.btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform 0.5s ease;
+}
+
+.btn:hover::after {
+    transform: scale(2);
+}
+
 /* Primary */
 .btn-primary {
     background: linear-gradient(90deg, #1ed761, #15c46a);
@@ -362,8 +401,17 @@ p {
 }
 
 .social-icons a:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.1);
     color: #151925;
+}
+
+/* Icon Bounce Effect */
+.social-icons a i {
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover i {
+    transform: scale(1.2) rotate(10deg);
 }
 
 .social-icons a::before {
