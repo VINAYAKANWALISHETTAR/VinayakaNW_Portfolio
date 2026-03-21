@@ -175,6 +175,7 @@ header {
     font-weight: 700;
     color: #e6e9f0;
     text-decoration: none;
+    position: relative;
 }
 
 .logo-icon {
@@ -197,6 +198,9 @@ header {
     text-transform: uppercase !important;
     display: block !important;
     opacity: 1 !important;
+    position: absolute !important;
+    bottom: -18px !important;
+    left: 0 !important;
 }
 
 

@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "AI/ML Developer",
         "Backend Developer",
         "Tech Innovator"
+        "Entrepreneur"
     ];
 
     let textIndex = 0;
