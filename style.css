@@ -188,24 +188,15 @@ header {
     -webkit-text-fill-color: transparent;
 }
 
-.logo-text .kingdom-watermark {
-    font-size: 0.65rem;
-    color: rgba(42, 252, 133, 0.4);
-    letter-spacing: 8px;
-    font-weight: 400;
-    margin: -5px 0 0 0;
-    text-transform: uppercase;
-    display: block;
-}
-
 .logo .kingdom-watermark {
-    font-size: 0.65rem;
-    color: rgba(42, 252, 133, 0.4);
-    letter-spacing: 8px;
-    font-weight: 400;
-    margin: -8px 0 0 0;
-    text-transform: uppercase;
-    display: block;
+    font-size: 0.65rem !important;
+    color: rgba(42, 252, 133, 0.5) !important;
+    letter-spacing: 8px !important;
+    font-weight: 400 !important;
+    margin: -10px 0 0 0 !important;
+    text-transform: uppercase !important;
+    display: block !important;
+    opacity: 1 !important;
 }
 
 
