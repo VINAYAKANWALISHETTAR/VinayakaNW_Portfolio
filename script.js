@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "Cybersecurity Enthusiast",
         "AI/ML Developer",
         "Backend Developer",
-        "Tech Innovator"
+        "Tech Innovator",
         "Entrepreneur"
     ];
 

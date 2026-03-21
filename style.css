@@ -1235,8 +1235,8 @@ section {
 
 /* LEFT SIDE */
 .about-left {
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
     transition: all 0.6s ease;
 }
 
@@ -1412,8 +1412,8 @@ section {
     border-radius: 12px;
     border: 1px solid rgba(42, 252, 133, 0.08);
     transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
 .skill-card-minimal.show {
@@ -1561,8 +1561,8 @@ section {
     border-radius: 12px;
     border: 1px solid rgba(42, 252, 133, 0.08);
     transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
 .project-card-minimal.show {
