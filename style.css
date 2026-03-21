@@ -198,6 +198,16 @@ header {
     display: block;
 }
 
+.logo .kingdom-watermark {
+    font-size: 0.65rem;
+    color: rgba(42, 252, 133, 0.4);
+    letter-spacing: 8px;
+    font-weight: 400;
+    margin: -8px 0 0 0;
+    text-transform: uppercase;
+    display: block;
+}
+
 
 /* ===== NAVBAR ===== */
 nav ul {
