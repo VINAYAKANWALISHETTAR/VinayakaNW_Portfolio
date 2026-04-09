@@ -94,27 +94,29 @@ document.addEventListener("DOMContentLoaded", function () {
     const typingElement = document.querySelector(".typing-text");
 
     function type() {
-        const currentText = texts[textIndex];
+    const currentText = texts[textIndex];
 
-        if (isDeleting) {
-            typingElement.textContent = currentText.substring(0, charIndex--);
-        } else {
-            typingElement.textContent = currentText.substring(0, charIndex++);
-        }
-
-        let speed = isDeleting ? 50 : 100;
-
-        if (!isDeleting && charIndex === currentText.length) {
-            isDeleting = true;
-            speed = 1500;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-            speed = 500;
-        }
-
-        setTimeout(type, speed);
+    if (isDeleting) {
+        charIndex--;
+    } else {
+        charIndex++;
     }
+
+    typingElement.textContent = currentText.substring(0, charIndex);
+
+    let speed = isDeleting ? 70 : 130;
+
+    if (!isDeleting && charIndex >= currentText.length) {
+        isDeleting = true;
+        speed = 800; // reduced pause
+    } else if (isDeleting && charIndex <= 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % texts.length;
+        speed = 200;
+    }
+
+    setTimeout(type, speed);
+}
 
     setTimeout(type, 1000);
 
