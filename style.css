@@ -1482,7 +1482,7 @@ section {
 }
 
 .about-lead {
-    font-size: 1.2rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.2rem);
     color: #2afc85;
     line-height: 1.6;
     margin-bottom: 20px;
@@ -1494,7 +1494,7 @@ section {
 .about-description {
     color: #c2c6d3;
     line-height: 1.8;
-    font-size: 1.05rem;
+    font-size: clamp(1rem, 2vw, 1.05rem);
     margin-bottom: 0;
 }
 
@@ -1597,7 +1597,7 @@ section {
 
 .timeline-content-simple h4 {
     color: #e6e9f0;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
     margin-bottom: 8px;
     display: flex;
     align-items: center;
@@ -1611,7 +1611,7 @@ section {
 
 .timeline-text {
     color: #c2c6d3;
-    font-size: 0.95rem;
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
     line-height: 1.6;
     margin: 0;
 }
@@ -1675,7 +1675,7 @@ section {
 
 .skill-card-header h3 {
     color: #e6e9f0;
-    font-size: 1.2rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.2rem);
     font-weight: 600;
     margin: 0;
 }
@@ -1823,7 +1823,7 @@ section {
 
 .project-header h3 {
     color: #e6e9f0;
-    font-size: 1.2rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.2rem);
     font-weight: 600;
     margin: 0;
     line-height: 1.4;
@@ -1831,7 +1831,7 @@ section {
 
 .project-description {
     color: #c2c6d3;
-    font-size: 0.95rem;
+    font-size: clamp(0.9rem, 2vw, 0.95rem);
     line-height: 1.6;
     margin-bottom: 18px;
     display: -webkit-box;
