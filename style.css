@@ -1450,6 +1450,16 @@ section {
     border-radius: 2px;
 }
 
+.projects-note {
+    text-align: center;
+    color: #c2c6d3;
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    margin: 40px auto 50px;
+    max-width: 600px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
 /* ===== ABOUT SECTION - MINIMAL DESIGN ===== */
 .about-section {
     background: rgba(12, 15, 23, 0.5);
