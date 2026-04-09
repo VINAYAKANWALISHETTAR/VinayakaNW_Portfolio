@@ -1417,14 +1417,14 @@ p {
 
 /* ===== SECTIONS COMMON STYLES ===== */
 section {
-    padding: 100px 20px;
+    padding: clamp(60px, 10vh, 100px) clamp(15px, 3vw, 20px);
     position: relative;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 clamp(15px, 3vw, 20px);
 }
 
 .section-title {
@@ -2077,7 +2077,7 @@ footer {
 
 .copyright-text {
     color: rgba(194, 198, 211, 0.6);
-    font-size: 0.9rem;
+    font-size: clamp(0.85rem, 2vw, 0.9rem);
     margin: 0;
     font-weight: 400;
     letter-spacing: 0.3px;
@@ -2085,7 +2085,7 @@ footer {
 
 .footer-kingdom {
     color: rgba(194, 198, 211, 0.4);
-    font-size: 0.75rem;
+    font-size: clamp(0.7rem, 1.8vw, 0.75rem);
     margin: 8px 0 0 0;
     font-weight: 400;
     letter-spacing: 0.5px;
@@ -2130,7 +2130,7 @@ footer {
 
 .final-cta-subtitle {
     color: #c2c6d3;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
     line-height: 1.6;
     margin-bottom: 35px;
 }
