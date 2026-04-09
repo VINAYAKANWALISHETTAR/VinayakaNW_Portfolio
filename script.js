@@ -108,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!isDeleting && charIndex >= currentText.length) {
         isDeleting = true;
-        speed = 800; // reduced pause
+        speed = 1000; // reduced pause
     } else if (isDeleting && charIndex <= 0) {
         isDeleting = false;
         textIndex = (textIndex + 1) % texts.length;
@@ -362,6 +362,11 @@ document.addEventListener("DOMContentLoaded", function () {
             command: 'resume.build --status="updating"',
             output: 'available_soon',
             message: 'I\'m currently updating my resume with my latest projects and experience. Check back soon!'
+        },
+        casestudy: {
+            command: 'case-study.generate --project="featured"',
+            output: 'status: in_progress\neta: coming_soon',
+            message: 'Detailed case studies are being prepared. They will be available soon with in-depth project insights!'
         },
         code: {
             command: 'git push origin main',

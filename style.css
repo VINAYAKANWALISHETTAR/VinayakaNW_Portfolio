@@ -1239,6 +1239,11 @@ p {
         justify-content: center;
     }
     
+    .project-github-note {
+        font-size: 0.75rem;
+        margin: 10px 0 0 0;
+    }
+    
     /* Contact section small mobile */
     .contact-section {
         padding: 60px 15px;
@@ -1876,6 +1881,15 @@ section {
 .project-buttons {
     display: flex;
     gap: 12px;
+}
+
+.project-github-note {
+    text-align: center;
+    color: rgba(194, 198, 211, 0.6);
+    font-size: 0.8rem;
+    margin: 12px 0 0 0;
+    font-weight: 500;
+    letter-spacing: 0.3px;
 }
 
 .btn-project-primary,
