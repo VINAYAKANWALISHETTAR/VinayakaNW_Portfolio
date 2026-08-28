@@ -3,101 +3,127 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     // ===== PORTFOLIO INTRO =====
-    const intro = document.getElementById('portfolioIntro');
-    const introGreetings = document.getElementById('introGreetings');
-    const introWelcome = document.getElementById('introWelcome');
-    const introSkip = document.getElementById('introSkip');
-    const greetings = document.querySelectorAll('.greeting');
+// ===== PORTFOLIO INTRO =====
+const intro = document.getElementById('portfolioIntro');
+const introGreetings = document.getElementById('introGreetings');
+const introWelcome = document.getElementById('introWelcome');
+const introSkip = document.getElementById('introSkip');
+const greetings = Array.from(document.querySelectorAll('.greeting'));
 
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let introSkipped = false;
+let introTimer = null;
 
-    function hideIntro() {
-        if (intro) {
-            intro.style.transition = 'opacity 0.6s ease, visibility 0.6s ease';
-            intro.classList.add('hidden');
-            setTimeout(() => {
-                intro.style.display = 'none';
-            }, 600);
-        }
+function hideIntro() {
+    if (!intro) return;
+
+    intro.style.transition = 'opacity 0.45s ease, visibility 0.45s ease';
+    intro.classList.add('hidden');
+
+    setTimeout(() => {
+        intro.style.display = 'none';
+    }, 600);
+}
+
+function showIntro() {
+    if (!intro) return;
+
+    intro.style.display = 'flex';
+    intro.classList.remove('hidden');
+    intro.style.opacity = '1';
+    intro.style.visibility = 'visible';
+    intro.style.pointerEvents = 'auto';
+}
+
+function wait(ms) {
+    return new Promise(resolve => {
+        introTimer = setTimeout(resolve, ms);
+    });
+}
+
+async function playIntro() {
+    if (!intro || !introGreetings || !introWelcome || greetings.length === 0) {
+        return;
     }
 
-    function showIntro() {
-        if (!intro) return;
-        intro.style.display = 'flex';
-        intro.style.transition = 'none';
-        intro.classList.remove('hidden');
-        intro.style.opacity = '1';
-        intro.style.visibility = 'visible';
-        intro.style.pointerEvents = 'auto';
-    }
-
-    function playIntro() {
-        if (!intro || !introGreetings || !introWelcome) return;
-
-        showIntro();
-
-        const greetingElements = Array.from(greetings);
-        const showDuration = 700;   // how long each greeting is fully visible
-        const fadeDuration = 350;   // matches CSS transition duration
-        const totalGreetings = greetingElements.length;
-
-        // Ensure all greetings start hidden
-        greetingElements.forEach(g => {
-            g.classList.remove('active', 'exit');
-        });
-
-        let currentTime = 0;
-
-        greetingElements.forEach((greeting, index) => {
-            // Fade IN
-            setTimeout(() => {
-                greeting.classList.remove('exit');
-                greeting.classList.add('active');
-            }, currentTime);
-
-            // Fade OUT after showing
-            currentTime += fadeDuration + showDuration;
-            setTimeout(() => {
-                greeting.classList.remove('active');
-                greeting.classList.add('exit');
-            }, currentTime);
-
-            // Wait for fade-out before next greeting
-            currentTime += fadeDuration;
-        });
-
-        // Show welcome screen after all greetings are done
-        const welcomeDelay = currentTime + 300;
-        setTimeout(() => {
-            if (introGreetings) introGreetings.style.display = 'none';
-            if (introWelcome) introWelcome.classList.add('active');
-        }, welcomeDelay);
-
-        // Hide intro overlay after welcome is shown
-        setTimeout(() => {
-            hideIntro();
-        }, welcomeDelay + 2000);
-    }
-
+    introSkipped = false;
     showIntro();
 
-    if (!prefersReducedMotion) {
-        playIntro();
-    } else {
-        setTimeout(() => {
-            hideIntro();
-        }, 1500);
-    }
+    // Make sure welcome screen is hidden initially
+    introWelcome.classList.remove('active');
+    introGreetings.style.display = 'flex';
 
-    if (introSkip) {
-        introSkip.addEventListener('click', () => {
-            hideIntro();
-            if (introGreetings) introGreetings.style.display = 'none';
-            if (introWelcome) introWelcome.classList.remove('active');
+    // Reset every greeting
+    greetings.forEach(greeting => {
+        greeting.classList.remove('active', 'exit');
+    });
+
+    // ===== SHOW EACH LANGUAGE ONE BY ONE =====
+    for (let i = 0; i < greetings.length; i++) {
+
+        if (introSkipped) return;
+
+        const currentGreeting = greetings[i];
+
+        // Remove previous states
+        greetings.forEach(greeting => {
+            greeting.classList.remove('active', 'exit');
         });
+
+        // Show current language
+        currentGreeting.classList.add('active');
+
+        // Keep it visible
+        await wait(600);
+
+        if (introSkipped) return;
+
+        // Smoothly move current language out
+        currentGreeting.classList.remove('active');
+        currentGreeting.classList.add('exit');
+
+        await wait(250);
     }
 
-    // ===== SCROLL PROGRESS BAR =====
+    if (introSkipped) return;
+
+    // Hide greetings
+    introGreetings.style.display = 'none';
+
+    // ===== SHOW WELCOME MESSAGE =====
+    introWelcome.classList.add('active');
+
+    await wait(350);
+
+    if (introSkipped) return;
+
+    // ===== CLOSE INTRO =====
+    hideIntro();
+}
+
+// Start intro after page loads
+showIntro();
+playIntro();
+
+// ===== SKIP BUTTON =====
+if (introSkip) {
+    introSkip.addEventListener('click', () => {
+        introSkipped = true;
+
+        if (introTimer) {
+            clearTimeout(introTimer);
+        }
+
+        if (introGreetings) {
+            introGreetings.style.display = 'none';
+        }
+
+        if (introWelcome) {
+            introWelcome.classList.remove('active');
+        }
+
+        hideIntro();
+    });
+}
     const scrollProgress = document.getElementById('scrollProgress');
 
     window.addEventListener('scroll', () => {
@@ -128,10 +154,24 @@ document.addEventListener("DOMContentLoaded", function () {
     cursorGlow.className = 'cursor-glow';
     document.body.appendChild(cursorGlow);
 
+    let cursorX = 0;
+    let cursorY = 0;
+    let glowX = 0;
+    let glowY = 0;
+
     document.addEventListener('mousemove', (e) => {
-        cursorGlow.style.left = e.clientX + 'px';
-        cursorGlow.style.top = e.clientY + 'px';
+        cursorX = e.clientX;
+        cursorY = e.clientY;
     });
+
+    function animateCursor() {
+        glowX += (cursorX - glowX) * 0.15;
+        glowY += (cursorY - glowY) * 0.15;
+        cursorGlow.style.left = glowX + 'px';
+        cursorGlow.style.top = glowY + 'px';
+        requestAnimationFrame(animateCursor);
+    }
+    requestAnimationFrame(animateCursor);
 
     // ===== MAGNETIC BUTTONS =====
     const buttons = document.querySelectorAll('.btn, .social-icons a');
