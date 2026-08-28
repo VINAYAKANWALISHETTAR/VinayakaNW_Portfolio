@@ -37,43 +37,46 @@ document.addEventListener("DOMContentLoaded", function () {
         showIntro();
 
         const greetingElements = Array.from(greetings);
-        const greetingDuration = 900;
-        const crossfadeDelay = 150;
+        const showDuration = 700;   // how long each greeting is fully visible
+        const fadeDuration = 350;   // matches CSS transition duration
         const totalGreetings = greetingElements.length;
 
-        greetingElements.forEach((greeting, index) => {
-            const showTime = index * (greetingDuration + crossfadeDelay);
-
-            setTimeout(() => {
-                if (index > 0 && greetingElements[index - 1]) {
-                    greetingElements[index - 1].classList.remove('active');
-                    greetingElements[index - 1].classList.add('exit');
-                }
-
-                setTimeout(() => {
-                    greetingElements.forEach(g => g.classList.remove('active', 'exit'));
-                    greeting.classList.add('active');
-                }, crossfadeDelay);
-            }, showTime);
+        // Ensure all greetings start hidden
+        greetingElements.forEach(g => {
+            g.classList.remove('active', 'exit');
         });
 
-        const lastGreetingEnd = (totalGreetings - 1) * (greetingDuration + crossfadeDelay) + greetingDuration;
+        let currentTime = 0;
 
+        greetingElements.forEach((greeting, index) => {
+            // Fade IN
+            setTimeout(() => {
+                greeting.classList.remove('exit');
+                greeting.classList.add('active');
+            }, currentTime);
+
+            // Fade OUT after showing
+            currentTime += fadeDuration + showDuration;
+            setTimeout(() => {
+                greeting.classList.remove('active');
+                greeting.classList.add('exit');
+            }, currentTime);
+
+            // Wait for fade-out before next greeting
+            currentTime += fadeDuration;
+        });
+
+        // Show welcome screen after all greetings are done
+        const welcomeDelay = currentTime + 300;
         setTimeout(() => {
-            if (greetingElements[totalGreetings - 1]) {
-                greetingElements[totalGreetings - 1].classList.remove('active');
-                greetingElements[totalGreetings - 1].classList.add('exit');
-            }
-        }, lastGreetingEnd);
+            if (introGreetings) introGreetings.style.display = 'none';
+            if (introWelcome) introWelcome.classList.add('active');
+        }, welcomeDelay);
 
-        setTimeout(() => {
-            introGreetings.style.display = 'none';
-            introWelcome.classList.add('active');
-        }, lastGreetingEnd + crossfadeDelay + 800);
-
+        // Hide intro overlay after welcome is shown
         setTimeout(() => {
             hideIntro();
-        }, lastGreetingEnd + crossfadeDelay + 800 + 2000);
+        }, welcomeDelay + 2000);
     }
 
     showIntro();
@@ -518,31 +521,42 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalOverlay = document.getElementById('modalOverlay');
     const modalContainer = document.getElementById('modalContainer');
     const modalClose = document.getElementById('modalClose');
-    const modalCommand = document.getElementById('modalCommand');
-    const modalOutput = document.getElementById('modalOutput');
-    const modalMessage = document.getElementById('modalMessage');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalLabelEl = document.querySelector('.modal-label');
+    const modalTitleEl = document.querySelector('.modal-title');
+    const modalDescEl = document.querySelector('.modal-description');
+    const modalStatusText = document.querySelector('.modal-status-text');
+    const modalStatusValue = document.querySelector('.modal-status-value');
 
     // Modal content configurations
     const modalContent = {
         resume: {
-            command: 'resume.build --status="updating"',
-            output: 'available_soon',
-            message: 'I\'m currently updating my resume with my latest projects and experience. Check back soon!'
+            label: 'RESUME',
+            title: 'Coming Soon',
+            description: "I'm currently updating my resume with my latest projects and experience. Check back soon!",
+            statusText: 'Resume Status',
+            statusValue: 'Updating'
         },
         casestudy: {
-            command: 'case-study.generate --project="featured"',
-            output: 'status: in_progress\neta: coming_soon',
-            message: 'Detailed case studies are being prepared. They will be available soon with in-depth project insights!'
+            label: 'CASE STUDY',
+            title: 'Coming Soon',
+            description: 'Detailed case studies are being prepared. They will be available soon with in-depth project insights!',
+            statusText: 'Case Study Status',
+            statusValue: 'In Progress'
         },
         code: {
-            command: 'git push origin main',
-            output: 'status: refining_code\nvisibility: coming_soon',
-            message: 'This project is being refined. The source code will be available once it\'s production-ready.'
+            label: 'SOURCE CODE',
+            title: 'Coming Soon',
+            description: "This project is being refined. The source code will be available once it's production-ready.",
+            statusText: 'Code Status',
+            statusValue: 'Refining'
         },
         demo: {
-            command: 'deploy --project="portfolio"',
-            output: 'status: testing_phase\nresult: not_live_yet',
-            message: 'This project is in the testing phase. The live demo will be available shortly.'
+            label: 'LIVE DEMO',
+            title: 'Coming Soon',
+            description: 'This project is currently being updated and refined. The live demo will be available soon.',
+            statusText: 'Project Status',
+            statusValue: 'In Development'
         }
     };
 
@@ -550,21 +564,27 @@ document.addEventListener("DOMContentLoaded", function () {
     function showModal(type) {
         const content = modalContent[type];
         if (content) {
-            modalCommand.textContent = content.command;
-            modalOutput.textContent = content.output;
-            modalMessage.textContent = content.message;
-            modalOverlay.classList.add('active');
+            if (modalLabelEl) modalLabelEl.textContent = content.label;
+            if (modalTitleEl) modalTitleEl.textContent = content.title;
+            if (modalDescEl) modalDescEl.textContent = content.description;
+            if (modalStatusText) modalStatusText.textContent = content.statusText;
+            if (modalStatusValue) modalStatusValue.textContent = content.statusValue;
+            if (modalOverlay) modalOverlay.classList.add('active');
         }
     }
 
     // Close modal
     function closeModal() {
-        modalOverlay.classList.remove('active');
+        if (modalOverlay) modalOverlay.classList.remove('active');
     }
 
     // Event listeners
     if (modalClose) {
         modalClose.addEventListener('click', closeModal);
+    }
+
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeModal);
     }
 
     if (modalOverlay) {
@@ -694,6 +714,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Start auto-slide
         startAutoSlide();
+    }
+
+    // ===== VIEW MORE PROJECTS TOGGLE =====
+    const viewMoreBtn = document.getElementById('viewMoreProjects');
+    const otherProjectsWrapper = document.getElementById('otherProjectsWrapper');
+
+    if (viewMoreBtn && otherProjectsWrapper) {
+        viewMoreBtn.addEventListener('click', () => {
+            const isOpen = otherProjectsWrapper.classList.toggle('open');
+            viewMoreBtn.classList.toggle('expanded', isOpen);
+
+            const textEl = viewMoreBtn.querySelector('.view-more-text');
+            if (textEl) {
+                textEl.textContent = isOpen ? 'Show Less' : 'View More Projects';
+            }
+        });
     }
 
 });
