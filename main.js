@@ -192,22 +192,38 @@ if (introSkip) {
     // ===== MOBILE MENU =====
     const menuToggle = document.querySelector(".menu-toggle");
     const navMenu = document.querySelector("nav ul");
-    const icon = menuToggle.querySelector("i");
+    const icon = menuToggle?.querySelector("i");
 
-    menuToggle.addEventListener("click", function () {
-        navMenu.classList.toggle("active");
+    function setMenuState(isOpen) {
+        if (!menuToggle || !navMenu || !icon) return;
+        navMenu.classList.toggle("active", isOpen);
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+        icon.classList.toggle("fa-bars", !isOpen);
+        icon.classList.toggle("fa-xmark", isOpen);
+        document.body.classList.toggle("menu-open", isOpen);
+    }
 
-        icon.classList.toggle("fa-bars");
-        icon.classList.toggle("fa-xmark");
-    });
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener("click", () => setMenuState(!navMenu.classList.contains("active")));
+    }
 
     // CLOSE MENU ON CLICK
     document.querySelectorAll("nav ul li a").forEach(link => {
         link.addEventListener("click", () => {
-            navMenu.classList.remove("active");
-            icon.classList.add("fa-bars");
-            icon.classList.remove("fa-xmark");
+            setMenuState(false);
         });
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 768) setMenuState(false);
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && navMenu?.classList.contains("active")) {
+            setMenuState(false);
+            menuToggle?.focus();
+        }
     });
 
 
@@ -370,8 +386,11 @@ if (introSkip) {
     // Toggle chatbot panel
     if (chatbotToggle) {
         chatbotToggle.addEventListener('click', () => {
-            chatbotPanel.classList.toggle('active');
-            if (chatbotPanel.classList.contains('active')) {
+            const isOpen = chatbotPanel.classList.toggle('active');
+            chatbotPanel.setAttribute('aria-hidden', String(!isOpen));
+            chatbotToggle.setAttribute('aria-expanded', String(isOpen));
+            chatbotToggle.setAttribute('aria-label', isOpen ? 'Close VN Assistant' : 'Open VN Assistant');
+            if (isOpen) {
                 chatbotToggle.innerHTML = '<i class="fa-solid fa-xmark"></i>';
             } else {
                 chatbotToggle.innerHTML = '<i class="fa-solid fa-message"></i>';
@@ -383,9 +402,19 @@ if (introSkip) {
     if (chatbotClose) {
         chatbotClose.addEventListener('click', () => {
             chatbotPanel.classList.remove('active');
+            chatbotPanel.setAttribute('aria-hidden', 'true');
+            chatbotToggle.setAttribute('aria-expanded', 'false');
+            chatbotToggle.setAttribute('aria-label', 'Open VN Assistant');
             chatbotToggle.innerHTML = '<i class="fa-solid fa-message"></i>';
         });
     }
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && chatbotPanel?.classList.contains('active')) {
+            chatbotClose?.click();
+            chatbotToggle?.focus();
+        }
+    });
 
     // Bot response data
     const botResponses = {
